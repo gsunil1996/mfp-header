@@ -3,8 +3,12 @@ import react from "@vitejs/plugin-react";
 import federation from "@originjs/vite-plugin-federation";
 import packageJson from "./package.json";
 
-export default defineConfig(() => {
+export default defineConfig(({ command }) => {
+  const isDevelopment = command === "serve";
   return {
+    base: isDevelopment
+      ? "http://localhost:8080"
+      : "https://mfp-header.vercel.app/",
     plugins: [
       react(),
       federation({
