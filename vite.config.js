@@ -41,7 +41,10 @@ export default defineConfig(({ command }) => {
       historyApiFallback: true,
     },
     build: {
+      modulePreload: false,
       target: "esnext",
+      minify: false,
+      cssCodeSplit: false,
     },
   };
 });
